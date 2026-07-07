@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>শ্রীপুর পৌরসভা - Trade License Verification</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'Noto Sans Bengali', Arial, sans-serif;
+    background: #f2f4f5;
+    margin: 0;
+    padding: 20px 10px;
+    color: #222;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+  }
+  .header {
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 1px solid #eee;
+  }
+  .header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .header p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #555;
+  }
+  .page-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0;
+  }
+  .section-title {
+    background: #e8f1fb;
+    padding: 10px 16px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 16px;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+  }
+  .row:nth-child(even) { background: #fafafa; }
+  .row .label {
+    flex: 1 1 240px;
+    font-weight: 600;
+  }
+  .row .value {
+    flex: 1 1 240px;
+  }
+  table.fee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  table.fee-table th {
+    background: #e8f1fb;
+    padding: 10px 16px;
+    text-align: left;
+  }
+  table.fee-table th:last-child,
+  table.fee-table td:last-child {
+    text-align: right;
+  }
+  table.fee-table td {
+    padding: 8px 16px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  table.fee-table tr.total td {
+    font-weight: 700;
+    background: #f5f5f5;
+  }
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 20px 16px;
+    border-top: 1px solid #eee;
+  }
+  .not-found {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 16px;
+    color: #b00020;
+  }
+  .search-box {
+    max-width: 800px;
+    margin: 0 auto 16px;
+    text-align: center;
+  }
+  .search-box input {
+    padding: 10px;
+    width: 60%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .search-box button {
+    padding: 10px 16px;
+    border: none;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-left: 6px;
+    cursor: pointer;
+  }
+  @media (max-width: 480px) {
+    .row .label, .row .value { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="search-box">
+  <input type="text" id="idInput" placeholder="লাইসেন্স নম্বর লিখুন (যেমন 003486)">
+  <button onclick="searchLicense()">খুঁজুন</button>
+</div>
+
+<div id="content"></div>
+
+<script>
+  // ---- লাইসেন্স ডেটাবেজ (এখানে নতুন লাইসেন্স যোগ করুন) ----
+  const licenses = {
+    "003486": {
+      licenseNo: "003486",
+      licenseId: "08-802-003486",
+      issueDate: "08/10/2025",
+      renewalYear: "2025-2026",
+      renewDate: "08/10/2025",
+      expiryDate: "30/06/2026",
+      orgNameBn: "নারীর অঙ্গন লেডিস টেইলার্স এন্ড বুটিকস",
+      orgNameEn: "-",
+      businessTypeBn: "টেইলার্স",
+      businessTypeEn: "Tailors",
+      addressBn: "হোল্ডিং নং: ৪২, কেওয়া পশ্চিম খন্ড, শ্রীপুর - গাজীপুর",
+      addressEn: "-",
+      ownerNameBn: "সীমা চৌধুরী",
+      ownerNameEn: "-",
+      fatherNameBn: "মোঃ আশরাফুল ইসলাম",
+      fatherNameEn: "-",
+      motherNameBn: "হোসনে আরা বেগম",
+      motherNameEn: "-",
+      nid: "19803328608000018",
+      phone: "01727647372",
+      fees: [
+        ["Trade License / Renewal Fee", 1000],
+        ["Signboard Fee", 100],
+        ["Misc. & Application Fee", 50],
+        ["VAT", 150],
+        ["Income Tax", 500]
+      ],
+      total: 1800
+    },
+    "008488": {
+      licenseNo: "008488",
+      licenseId: "08-802-008488",
+      issueDate: "07/07/2026",
+      renewalYear: "2026-2027",
+      renewDate: "07/07/2026",
+      expiryDate: "30/06/2027",
+      orgNameBn: "ফজলু মটরস",
+      orgNameEn: "FAZLU MOTORS",
+      businessTypeBn: "পুরাতন মটর সাইকেল ক্রয় ও বিক্রয়",
+      businessTypeEn: "OLD BIKE BUY & SELL",
+      addressBn: "মাওনা বাজার রোড, শ্রীপুর, গাজীপুর",
+      addressEn: "MAWNA BAZAR ROAD, SREEPUR, GAZIPUR",
+      ownerNameBn: "মোঃ ফজলু মিয়া",
+      ownerNameEn: "MD FAZLU MIA",
+      fatherNameBn: "মোঃ আশরাফ আলী",
+      fatherNameEn: "MD ASHRAF ALI",
+      motherNameBn: "মোছাঃ নাছিমা খাতুন",
+      motherNameEn: "MST NASIMA KHATUN",
+      nid: "3764442046",
+      phone: "01775569239",
+      fees: [
+        ["Trade License Fee / বার্ষিক ট্রেড লাইসেন্স ফি", 3600],
+        ["VAT (15%)", 540],
+        ["Professional & Commercial Tax", 500]
+      ],
+      total: 4640
+    }
+  };
+
+  function formatAmount(n) {
+    return n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  }
+
+  function renderLicense(data) {
+    let feeRows = data.fees.map(f =>
+      `<tr><td>${f[0]}</td><td>${formatAmount(f[1])}</td></tr>`
+    ).join('');
+
+    return `
+    <div class="container">
+      <div class="header">
+        <h1>শ্রীপুর পৌরসভা কার্যালয়</h1>
+        <p>Sreepur Pourashava, Sreepur, Gazipur</p>
+      </div>
+      <div class="page-title">Trade License Verification</div>
+
+      <div class="section-title">Trade License Information</div>
+      <div class="row"><div class="label">Trade License No. / ট্রেড লাইসেন্স নম্বর</div><div class="value">${data.licenseNo}</div></div>
+      <div class="row"><div class="label">Trade License Id.</div><div class="value">${data.licenseId}</div></div>
+      <div class="row"><div class="label">Issue Date</div><div class="value">${data.issueDate}</div></div>
+      <div class="row"><div class="label">Renewal Year</div><div class="value">${data.renewalYear}</div></div>
+      <div class="row"><div class="label">Renew Date</div><div class="value">${data.renewDate}</div></div>
+      <div class="row"><div class="label">Expiry Date</div><div class="value">${data.expiryDate}</div></div>
+
+      <div class="section-title">Client Information</div>
+      <div class="row"><div class="label">প্রতিষ্ঠানের নাম</div><div class="value">${data.orgNameBn} / ${data.orgNameEn}</div></div>
+      <div class="row"><div class="label">ব্যবসার ধরন</div><div class="value">${data.businessTypeBn} / ${data.businessTypeEn}</div></div>
+      <div class="row"><div class="label">প্রতিষ্ঠানের ঠিকানা</div><div class="value">${data.addressBn}</div></div>
+      <div class="row"><div class="label">মালিকের নাম</div><div class="value">${data.ownerNameBn} / ${data.ownerNameEn}</div></div>
+      <div class="row"><div class="label">পিতার নাম</div><div class="value">${data.fatherNameBn} / ${data.fatherNameEn}</div></div>
+      <div class="row"><div class="label">মাতার নাম</div><div class="value">${data.motherNameBn} / ${data.motherNameEn}</div></div>
+      <div class="row"><div class="label">জাতীয় পরিচয়পত্র নং</div><div class="value">${data.nid}</div></div>
+      <div class="row"><div class="label">মোবাইল নম্বর</div><div class="value">${data.phone}</div></div>
+
+      <div class="section-title">Trade License Fee Information</div>
+      <table class="fee-table">
+        <tr><th>Description</th><th>Amount</th></tr>
+        ${feeRows}
+        <tr class="total"><td>Total</td><td>${formatAmount(data.total)}</td></tr>
+      </table>
+
+      <div class="footer">© Copyright Sreepur Pourashava</div>
+    </div>`;
+  }
+
+  function renderNotFound(id) {
+    return `<div class="container"><div class="not-found">
+      লাইসেন্স নম্বর "${id}" খুঁজে পাওয়া যায়নি।<br>
+      অনুগ্রহ করে সঠিক নম্বর দিন।
+    </div></div>`;
+  }
+
+  function loadFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('Id') || params.get('id');
+    const content = document.getElementById('content');
+    if (!id) {
+      content.innerHTML = `<div class="container"><div class="not-found">
+        উপরে লাইসেন্স নম্বর লিখে খুঁজুন, অথবা লিংকে ?Id=লাইসেন্সনম্বর যোগ করুন।<br><br>
+        উদাহরণ: <br>?Id=003486
+      </div></div>`;
+      return;
+    }
+    if (licenses[id]) {
+      content.innerHTML = renderLicense(licenses[id]);
+    } else {
+      content.innerHTML = renderNotFound(id);
+    }
+  }
+
+  function searchLicense() {
+    const id = document.getElementById('idInput').value.trim();
+    if (id) {
+      window.location.search = '?Id=' + encodeURIComponent(id) + '&ZoneInfoId=10550';
+    }
+  }
+
+  loadFromURL();
+</script>
+
+</body>
+</html>
