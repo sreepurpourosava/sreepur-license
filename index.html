@@ -85,14 +85,42 @@
     font-weight: 700;
     background: #f5f5f5;
   }
+  
+  /* নতুন ফুটার স্টাইল */
   .footer {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     font-size: 12px;
-    color: #666;
+    color: #222;
     padding: 20px 16px;
     border-top: 1px solid #eee;
   }
-  .footer a { color: #c0392b; text-decoration: none; }
+  .footer-left {
+    color: #e65100; /* Orange/Red-Orange Copyright text */
+  }
+  .footer-left span {
+    color: #1b5e20; /* Green text */
+    font-weight: 500;
+  }
+  .footer-right {
+    text-align: right;
+    color: #444;
+    line-height: 1.5;
+  }
+  .footer-right .brand-red {
+    color: #b71c1c; /* Techno */
+  }
+  .footer-right .brand-green {
+    color: #1b5e20; /* Vista */
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    .footer { flex-direction: column; text-align: center; gap: 10px; }
+    .footer-right { text-align: center; }
+  }
   @media (max-width: 480px) {
     .row .label, .row .value { flex: 1 1 100%; }
   }
@@ -102,52 +130,47 @@
 <div class="container">
 
   <div class="header">
-    <h1>Sreepur Pourashava</h1>
-    <p>Sreepur, Gazipur</p>
+    <h1>শ্রীপুর পৌরসভা কার্যালয়</h1>
+    <p>Sreepur Pourashava, Sreepur, Gazipur</p>
   </div>
 
   <div class="page-title">License Verification</div>
 
   <div class="section-title">License Information</div>
-  <div class="row"><div class="label">License No.</div><div class="value">[লাইসেন্স নম্বর লিখুন]</div></div>
-  <div class="row"><div class="label">License Id.</div><div class="value">08-802-[XXXXXX]</div></div>
-  <div class="row"><div class="label">Issue Date</div><div class="value">[dd/mm/yyyy]</div></div>
-  <div class="row"><div class="label">Renewal Year</div><div class="value">[yyyy-yyyy]</div></div>
-  <div class="row"><div class="label">Renew Date</div><div class="value">[dd/mm/yyyy]</div></div>
-  <div class="row"><div class="label">Expiry Date</div><div class="value">[dd/mm/yyyy]</div></div>
+  <div class="row"><div class="label">License No. / লাইসেন্স নম্বর</div><div class="value">008488</div></div>
+  <div class="row"><div class="label">License Id. / লাইসেন্স আইডি</div><div class="value">08-802-008488</div></div>
+  <div class="row"><div class="label">Issue Date / ইস্যু তারিখ</div><div class="value">07/07/2026</div></div>
+  <div class="row"><div class="label">Renewal Year / অর্থ বছর</div><div class="value">2026-2027</div></div>
+  <div class="row"><div class="label">Expiry Date / মেয়াদ উত্তীর্ণ তারিখ</div><div class="value">30/06/2027</div></div>
 
   <div class="section-title">Client Information</div>
-  <div class="row"><div class="label">প্রতিষ্ঠানের নাম</div><div class="value">[প্রতিষ্ঠানের নাম] / Organization Name: -</div></div>
-  <div class="row"><div class="label">ব্যবসার ধরন</div><div class="value">[ব্যবসার ধরন] / Business Type: -</div></div>
-  <div class="row"><div class="label">ওয়ার্ড</div><div class="value">[ওয়ার্ড নং] / Ward: -</div></div>
-  <div class="row"><div class="label">মহল্লা / রাস্তার নাম</div><div class="value">[মহল্লা/রাস্তা] / Street: -</div></div>
-  <div class="row"><div class="label">প্রতিষ্ঠানের ঠিকানা</div><div class="value">[হোল্ডিং/দোকান নং, এলাকা] / Organization Address: -</div></div>
-  <div class="row"><div class="label">মালিকের নাম</div><div class="value">[মালিকের নাম] / Owner Name: -</div></div>
-  <div class="row"><div class="label">পিতার নাম</div><div class="value">[পিতার নাম] / Father Name: -</div></div>
-  <div class="row"><div class="label">মাতার নাম</div><div class="value">[মাতার নাম] / Mother Name: -</div></div>
-  <div class="row"><div class="label">মালিকের স্বামী/স্ত্রীর নাম</div><div class="value">[স্বামী/স্ত্রীর নাম] / Spouse Name: -</div></div>
-  <div class="row"><div class="label">জাতীয় পরিচয়পত্র নং</div><div class="value">[NID নম্বর] / NID: -</div></div>
-  <div class="row"><div class="label">মোবাইল নম্বর</div><div class="value">[মোবাইল নম্বর] / Phone/Mobile No.: -</div></div>
+  <div class="row"><div class="label">প্রতিষ্ঠানের নাম / Organization Name</div><div class="value">ফজলু মটরস / FAZLU MOTORS</div></div>
+  <div class="row"><div class="label">ব্যবসার ধরন / Business Type</div><div class="value">পুরাতন মটর সাইকেল ক্রয় ও বিক্রয় / OLD BIKE BUY & SELL</div></div>
+  <div class="row"><div class="label">প্রতিষ্ঠানের ঠিকানা / Business Address</div><div class="value">মাওনা বাজার রোড, শ্রীপুর, গাজীপুর / MAWNA BAZAR ROAD, SREEPUR, GAZIPUR.</div></div>
+  <div class="row"><div class="label">মালিকের নাম / Owner Name</div><div class="value">মোঃ ফজলু মিয়া / MD FAZLU MIA</div></div>
+  <div class="row"><div class="label">পিতার নাম / Father's Name</div><div class="value">মোঃ আশরাফ আলী / MD ASHRAF ALI</div></div>
+  <div class="row"><div class="label">মাতার নাম / Mother's Name</div><div class="value">মোছাঃ নাছিমা খাতুন / MST NASIMA KHATUN</div></div>
+  <div class="row"><div class="label">জাতীয় পরিচয়পত্র নং / NID</div><div class="value">3764442046</div></div>
+  <div class="row"><div class="label">মোবাইল নম্বর / Phone No.</div><div class="value">01775569239</div></div>
 
   <div class="section-title">Fee Information</div>
   <table class="fee-table">
-    <tr><th>Description</th><th>Amount</th></tr>
-    <tr><td>License / Renewal Fee</td><td>0.00</td></tr>
-    <tr><td>Signboard Fee</td><td>0.00</td></tr>
-    <tr><td>Misc. &amp; Application Fee</td><td>0.00</td></tr>
-    <tr><td>Arrear</td><td>0.00</td></tr>
-    <tr><td>Current Surcharge</td><td>0.00</td></tr>
-    <tr><td>Surcharge</td><td>0.00</td></tr>
-    <tr><td>VAT</td><td>0.00</td></tr>
-    <tr><td>VAT Arrear</td><td>0.00</td></tr>
-    <tr><td>Income Tax</td><td>0.00</td></tr>
-    <tr><td>Income Tax Arrear</td><td>0.00</td></tr>
-    <tr class="total"><td>Total</td><td>0.00</td></tr>
+    <tr><th>Description</th><th>Amount (Tk)</th></tr>
+    <tr><td>Trade License Fee / ট্রেড লাইসেন্স ফি (বার্ষিক)</td><td>3600.00</td></tr>
+    <tr><td>Signboard Fee / সাইনবোর্ড কর</td><td>0.00</td></tr>
+    <tr><td>Professional &amp; Commercial Tax / পেশা ও বাণিজ্যিক কর</td><td>500.00</td></tr>
+    <tr><td>VAT (15%) / ১৫% ভ্যাট</td><td>540.00</td></tr>
+    <tr class="total"><td>Total / সর্বমোট টাকা</td><td>4640.00</td></tr>
   </table>
 
+  <!-- ছবির মতো করে তৈরি করা নতুন ফুটার -->
   <div class="footer">
-    © Copyright Sreepur Pourashava<br>
-    Designed &amp; Developed by [আপনার প্রতিষ্ঠান/ডেভেলপারের নাম]
+    <div class="footer-left">
+      © Copyright <span>Sreepur Pourashava</span>
+    </div>
+    <div class="footer-right">
+      Designed &amp; Developed by <span class="brand-red">Techno</span><span class="brand-green">Vista</span> Ltd. | JV Partner: Arc Bangladesh Ltd.
+    </div>
   </div>
 
 </div>
