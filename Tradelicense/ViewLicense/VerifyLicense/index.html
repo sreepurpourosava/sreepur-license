@@ -86,11 +86,32 @@
     background: #f5f5f5;
   }
   .footer {
-    text-align: center;
-    font-size: 12px;
-    color: #666;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
     padding: 20px 16px;
     border-top: 1px solid #eee;
+  }
+  .footer .copyright {
+    color: #c0392b;
+  }
+  .footer .copyright .org {
+    color: #1a7a3c;
+    font-weight: 600;
+  }
+  .footer .credit {
+    text-align: right;
+    color: #222;
+  }
+  .footer .credit .techno {
+    color: #c0392b;
+    font-weight: 600;
+  }
+  @media (max-width: 480px) {
+    .footer { flex-direction: column; text-align: left; }
+    .footer .credit { text-align: left; }
   }
   .not-found {
     text-align: center;
@@ -288,8 +309,8 @@
       </table>
 
       <div class="footer">
-        <div>© Copyright Sreepur Pourashava</div>
-        <div style="margin-top:4px;">Designed &amp; Developed by TechnoVista Ltd. | JV Partner: Arc Bangladesh Ltd.</div>
+        <div class="copyright">© Copyright <span class="org">Sreepur Pourashava</span></div>
+        <div class="credit">Designed &amp; Developed by <span class="techno">TechnoVista</span> Ltd. | JV Partner: Arc Bangladesh Ltd.</div>
       </div>
     </div>`;
   }
