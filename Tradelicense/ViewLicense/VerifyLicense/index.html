@@ -342,7 +342,7 @@
 
   function renderLicense(data) {
     let feeRows = data.fees.map(f =>
-      <tr><td>${f[0]}</td><td>${formatAmount(f[1])}</td></tr>
+      `<tr><td>${f[0]}</td><td>${formatAmount(f[1])}</td></tr>`
     ).join('');
 
     return `
