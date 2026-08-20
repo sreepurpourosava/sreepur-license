@@ -150,14 +150,14 @@
 <body>
 
 <div class="search-box">
-  <input type="text" id="idInput" placeholder="লাইসেন্স নম্বর লিখুন (যেমন 003486)">
+  <input type="text" id="idInput" placeholder="লাইসেন্স নম্বর লিখুন (যেমন 003697)">
   <button onclick="searchLicense()">খুঁজুন</button>
 </div>
 
 <div id="content"></div>
 
 <script>
-  // ---- লাইসেন্স ডেটাবেজ (এখানে নতুন লাইসেন্স যোগ করুন) ----
+  // ---- লাইসেন্স ডেটাবেজ ----
   const licenses = {
     "003486": {
       licenseNo: "003486",
@@ -579,6 +579,41 @@
       ],
       total: 1800
     },
+    "003697": {
+      licenseNo: "003697",
+      licenseId: "08-801-003697",
+      issueDate: "20/08/2026",
+      renewalYear: "2026-2027",
+      renewDate: "20/08/2026",
+      expiryDate: "30/06/2027",
+      orgNameBn: "জুয়েল ভিলা",
+      orgNameEn: "-",
+      businessTypeBn: "বাসা ভাড়া",
+      businessTypeEn: "House Rent",
+      addressBn: "হোল্ডিং নং: ১৬৬, কেওয়া পশ্চিম খন্ড, শ্রীপুর - গাজীপুর",
+      addressEn: "-",
+      ownerNameBn: "মোঃ জুয়েল রানা",
+      ownerNameEn: "-",
+      fatherNameBn: "মোঃ বিল্লাল হোসেন",
+      fatherNameEn: "-",
+      motherNameBn: "আনোয়ারা",
+      motherNameEn: "-",
+      nid: "৬৪৫৭৭৩৬২৩০০",
+      phone: "01713626104",
+      fees: [
+        ["License / Renewal Fee", 1500],
+        ["Signboard Fee", 150],
+        ["Misc. & Application Fee", 50],
+        ["Arrear", 0],
+        ["Current Surcharge", 0],
+        ["Surcharge", 0],
+        ["VAT", 225],
+        ["VAT Arrear", 0],
+        ["Income Tax", 500],
+        ["Income Tax Arrear", 0]
+      ],
+      total: 2425
+    },
     "003699": {
       licenseNo: "003699",
       licenseId: "08-801-003699",
@@ -622,6 +657,41 @@
       renewDate: "13/08/2026",
       expiryDate: "30/06/2027",
       orgNameBn: "মেসার্স সানু এন্টারপ্রাইজ",
+      orgNameEn: "-",
+      businessTypeBn: "ইটা, বালি ও পাথর সরবরাহকারী",
+      businessTypeEn: "Brick, Sand & Stone Supplier",
+      addressBn: "ওয়ার্ড নং-০৮, কেওয়া পশ্চিম খন্ড, মাওনা চৌরাস্তা, শ্রীপুর পৌরসভা, শ্রীপুর - গাজীপুর",
+      addressEn: "-",
+      ownerNameBn: "সানোয়ার হোসেন",
+      ownerNameEn: "-",
+      fatherNameBn: "নুরুল ইসলাম",
+      fatherNameEn: "-",
+      motherNameBn: "আনোয়ারা বেগম",
+      motherNameEn: "-",
+      nid: "5982983966",
+      phone: "01730210109",
+      fees: [
+        ["License / Renewal Fee", 1500],
+        ["Signboard Fee", 150],
+        ["Misc. & Application Fee", 50],
+        ["Arrear", 0],
+        ["Current Surcharge", 0],
+        ["Surcharge", 0],
+        ["VAT", 225],
+        ["VAT Arrear", 0],
+        ["Income Tax", 500],
+        ["Income Tax Arrear", 0]
+      ],
+      total: 2425
+    },
+    "005370": {
+      licenseNo: "005370",
+      licenseId: "08-903-005370",
+      issueDate: "13/08/2026",
+      renewalYear: "2026-2027",
+      renewDate: "13/08/2026",
+      expiryDate: "30/06/2027",
+      orgNameBn: "মেসার্স সানোয়ার ট্রেডার্স",
       orgNameEn: "-",
       businessTypeBn: "ইটা, বালি ও পাথর সরবরাহকারী",
       businessTypeEn: "Brick, Sand & Stone Supplier",
@@ -714,7 +784,7 @@
     if (!id) {
       content.innerHTML = `<div class="container"><div class="not-found">
         উপরে লাইসেন্স নম্বর লিখে খুঁজুন, অথবা লিংকে ?Id=লাইসেন্সনম্বর যোগ করুন।<br><br>
-        উদাহরণ: <br>?Id=003486
+        উদাহরণ: <br>?Id=003697
       </div></div>`;
       return;
     }
